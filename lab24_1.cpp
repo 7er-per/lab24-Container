@@ -64,3 +64,48 @@ void List::append(int d){
 }
 
 //Write List::remove() here
+
+void List::remove(int Pos){
+	if (Pos == 0)
+	{
+		Node *remv = root;
+		root = root->next;
+		delete remv;
+		return;
+	}
+
+	else if (Pos > 0)
+	{
+		Node *p = root;
+		for (int i = 0; i < Pos-1; i++)
+		{
+			p = p->next;
+		}
+		Node *remv = p->next;
+		p->next = remv->next;
+		delete remv;
+		return;
+	}
+	size--;
+}
+
+int main(){
+
+	List myList = {0,0};
+	myList.append(5);
+	myList.append(7);
+	myList.append(11);
+	myList.append(4);
+	myList.append(12);
+	myList.append(45);
+	myList.show();
+	cout << "\n"; 
+
+	myList.remove(0);
+	myList.show();
+	cout << "\n"; 
+	myList.remove(3);
+	myList.show();
+	cout << "\n"; 
+
+}
